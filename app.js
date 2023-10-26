@@ -124,7 +124,10 @@ function updatePrice() {
 cartButton.onclick = () => {
   updatePrice();
 
-
+  if (cartValue.innerText==0) {
+    alert("Cart is Empty")
+  }
+  var text = ""
   for (let index = 0; index < items.length; index++) {
     if (items[index].quantity != 0) {
       console.log(
@@ -133,10 +136,16 @@ cartButton.onclick = () => {
           " - Quantity: " +
           items[index].quantity
       );
+      text +="Item name: " +
+      items[index].name +
+      " - Quantity: " +
+      items[index].quantity
     }
   }
 
   console.log(
     "The total amount is " + finalDollars + "$ and " + finalCents + " cents"
   );
+  text+="The total amount is " + finalDollars + "$ and " + finalCents + " cents"
+  window.open("https://wa.me/7008347705?text="+text,"_self")
 };
